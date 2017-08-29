@@ -68,7 +68,7 @@ public class JpaConfiguration {
      * Entity manager factory setup
      */
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() throws NamingException {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws NamingException {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource());
         factoryBean.setPackagesToScan(new String[] {"com.crudapp.model"});
@@ -87,7 +87,7 @@ public class JpaConfiguration {
         return hibernateJpaVendorAdapter;
     }
 
-    @Bean
+
     private Properties jpaProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", environment.getRequiredProperty("datasource.sampleapp.hibernate.dialect"));
